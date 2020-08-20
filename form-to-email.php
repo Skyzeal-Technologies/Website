@@ -1,9 +1,9 @@
 <?php
-if(!isset($_POST['submit']))
-{
-	//This page should not be accessed directly. Need to submit the form.
-	echo "error; you need to submit the form!";
-}
+// if(!isset($_POST['submit']))
+// {
+// 	//This page should not be accessed directly. Need to submit the form.
+// 	echo "error; you need to submit the form!";
+// }
 $name = $_POST['name'];
 $visitor_email = $_POST['email'];
 $subject = $_POST['subject'];
@@ -25,7 +25,7 @@ if(IsInjected($visitor_email))
 $email_from = 'new-entry@skyzealtechnologies.com';//<== update the email address
 $email_subject = "$subject";
 $email_body = "You have received a new message from the user $name.\n".
-    "Here is the message:\n $message".
+    "Here is the message:\n $message \n\n\n".
     
 $to = "ritomgupta19999@gmail.com";//<== update the email address
 $headers = "From: $email_from \r\n";
@@ -33,7 +33,7 @@ $headers .= "Reply-To: $visitor_email \r\n";
 //Send the email!
 mail($to,$email_subject,$email_body,$headers);
 //done. redirect to thank-you page.
-header('thank-you');
+header('inner-page.html');
 
 
 // Function to validate against any email injection attempts
